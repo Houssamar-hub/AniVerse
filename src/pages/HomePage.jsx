@@ -1,14 +1,16 @@
 // pages/HomePage.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getTopAnime, getSeasonalAnime } from '../api/homeApi';
-import { FaArrowRight, FaStar, FaFire, FaCalendarAlt } from 'react-icons/fa';
+import { getTopAnime, getUpcomingAnime } from '../api/homeApi';
+import { FaArrowRight, FaStar, FaFire, FaClock } from 'react-icons/fa';
 import Hero from '../components/HeroSection';
+import LoadingSpinner from '../components/LoadingSpinner';
+import '../styles/homepage.css';
 
 function HomePage() {
   const navigate = useNavigate();
   const [trending, setTrending] = useState([]);
-  const [seasonal, setSeasonal] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,46 +22,30 @@ function HomePage() {
     try {
       setLoading(true);
       
-      // Fetch trending anime first
       const trendingRes = await getTopAnime(1, 6);
       setTrending(trendingRes.data);
       
-      // Then fetch seasonal anime with a small delay
       setTimeout(async () => {
         try {
-          const seasonalRes = await getSeasonalAnime(1, 6);
-          setSeasonal(seasonalRes.data);
+          const upcomingRes = await getUpcomingAnime(1, 6);
+          setUpcoming(upcomingRes.data);
           setError(null);
         } catch (err) {
-          if (err.response?.status === 429) {
-            setError('Too many requests. Please wait a moment and try again.');
-          } else {
-            setError('Failed to load seasonal anime.');
-          }
-          console.error(err);
-        } finally {
-          setLoading(false);
+          console.error('Error fetching upcoming:', err);
+          setUpcoming([]);
         }
-      }, 500); // 500ms delay between requests
+        setLoading(false);
+      }, 500);
       
     } catch (err) {
-      if (err.response?.status === 429) {
-        setError('Too many requests. Please wait a moment and try again.');
-      } else {
-        setError('Failed to load anime data. Please try again.');
-      }
+      setError('Failed to load anime data. Please try again.');
       console.error(err);
       setLoading(false);
     }
   };
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Loading amazing anime...</p>
-      </div>
-    );
+    return <LoadingSpinner message="Loading amazing anime..." size="large" />;
   }
 
   if (error) {
@@ -75,7 +61,6 @@ function HomePage() {
     <div className="homepage">
       <Hero />
 
-      {/* ===== TRENDING SECTION ===== */}
       <section className="section">
         <div className="section-header">
           <div className="section-header-left">
@@ -123,12 +108,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ===== SEASONAL SECTION ===== */}
       <section className="section">
         <div className="section-header">
           <div className="section-header-left">
-            <FaCalendarAlt className="section-icon" />
-            <h2 className="section-title">Seasonal Anime</h2>
+            <FaClock className="section-icon" />
+            <h2 className="section-title">Upcoming Anime</h2>
           </div>
           <button 
             onClick={() => navigate('/anime')}
@@ -138,37 +122,43 @@ function HomePage() {
             <FaArrowRight className="section-view-icon" />
           </button>
         </div>
-        <div className="anime-grid">
-          {seasonal.map(anime => (
-            <div 
-              key={anime.mal_id}
-              onClick={() => navigate(`/anime/${anime.mal_id}`)}
-              className="anime-card"
-            >
-              <div className="anime-card-image">
-                <img 
-                  src={anime.images.jpg.image_url} 
-                  alt={anime.title}
-                />
-                <div className="anime-card-score">
-                  <FaStar className="star-icon" />
-                  <span>{anime.score || 'N/A'}</span>
+        {upcoming.length > 0 ? (
+          <div className="anime-grid">
+            {upcoming.map(anime => (
+              <div 
+                key={anime.mal_id}
+                onClick={() => navigate(`/anime/${anime.mal_id}`)}
+                className="anime-card"
+              >
+                <div className="anime-card-image">
+                  <img 
+                    src={anime.images.jpg.image_url} 
+                    alt={anime.title}
+                  />
+                  <div className="anime-card-score">
+                    <FaStar className="star-icon" />
+                    <span>{anime.score || 'N/A'}</span>
+                  </div>
+                </div>
+                <div className="anime-card-content">
+                  <h3 className="anime-card-title">{anime.title}</h3>
+                  <div className="anime-card-info">
+                    <span className="anime-card-episodes">
+                      {anime.episodes || '?'} eps
+                    </span>
+                    <span className="anime-card-year">
+                      {anime.year || 'N/A'}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="anime-card-content">
-                <h3 className="anime-card-title">{anime.title}</h3>
-                <div className="anime-card-info">
-                  <span className="anime-card-episodes">
-                    {anime.episodes || '?'} eps
-                  </span>
-                  <span className="anime-card-year">
-                    {anime.year || 'N/A'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <p>No upcoming anime found at the moment.</p>
+          </div>
+        )}
       </section>
     </div>
   );
