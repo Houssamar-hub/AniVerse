@@ -1,286 +1,332 @@
-/* components/Hero.css */
+/* styles/HeroSection.css */
 
-/* ========== HERO SECTION ========== */
 .hero-section {
-  position: relative;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
-  overflow: hidden;
-  border-radius: 0 0 40px 40px;
-  margin-bottom: 60px;
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 60px;
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 60px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    filter: blur(4px);
+    transform: scale(1.1);
+    z-index: 0;
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(245, 166, 35, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(245, 166, 35, 0.05) 0%, transparent 50%);
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, rgba(15, 15, 26, 0.95) 0%, rgba(15, 15, 26, 0.7) 50%, rgba(15, 15, 26, 0.3) 100%),
+        radial-gradient(circle at 20% 50%, rgba(245, 166, 35, 0.08) 0%, transparent 50%);
+    z-index: 1;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  flex: 1;
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    flex: 1;
 }
 
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(245, 166, 35, 0.15);
-  color: var(--amber);
-  padding: 8px 16px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 24px;
-  border: 1px solid rgba(245, 166, 35, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--amber);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid rgba(245, 166, 35, 0.2);
+    animation: fadeInUp 0.6s ease;
 }
 
 .hero-badge-icon {
-  animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+    animation: pulse 2s ease infinite;
 }
 
 .hero-title {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  color: var(--text-primary);
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    animation: fadeInUp 0.8s ease;
 }
 
-.hero-title-highlight {
-  background: linear-gradient(135deg, var(--amber), #e8920f);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-score {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--amber);
+    font-weight: 700;
+}
+
+.hero-star {
+    color: var(--amber);
+}
+
+.hero-meta-divider {
+    opacity: 0.3;
+}
+
+.hero-status {
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--amber);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .hero-description {
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 32px;
-  max-width: 500px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 500px;
+    animation: fadeInUp 1.2s ease;
+}
+
+.hero-genres {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    animation: fadeInUp 1.4s ease;
+}
+
+.hero-genre-tag {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.hero-genre-tag:hover {
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--amber);
+    border-color: rgba(245, 166, 35, 0.2);
 }
 
 .hero-buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.6s ease;
 }
 
 .hero-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 32px;
-  background: linear-gradient(135deg, var(--amber), #e8920f);
-  color: var(--ink);
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--amber), #e8920f);
+    color: var(--ink);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .hero-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
 }
 
 .hero-btn-icon {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .hero-btn-primary:hover .hero-btn-icon {
-  transform: translateX(4px);
+    transform: translateX(4px);
 }
 
 .hero-btn-secondary {
-  padding: 14px 32px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    padding: 14px 32px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-stat-number {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text-primary);
-  font-family: 'Bebas Neue', cursive;
-}
-
-.hero-stat-label {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.hero-stat-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
 .hero-image {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease;
 }
 
-.hero-image-placeholder {
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 166, 35, 0.1) 0%, transparent 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 150px;
-  animation: float 6s ease-in-out infinite;
+.hero-anime-image {
+    width: 350px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+.hero-anime-image:hover {
+    transform: scale(1.02);
 }
 
-/* ========== RESPONSIVE HERO ========== */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: 44px;
-  }
-
-  .hero-image-placeholder {
-    width: 300px;
-    height: 300px;
-    font-size: 120px;
-  }
+.hero-image-glow {
+    position: absolute;
+    width: 400px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: 1;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .hero-section {
+.hero-error {
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    min-height: auto;
-    padding: 60px 20px 40px;
-    border-radius: 0 0 20px 20px;
-  }
-
-  .hero-content {
-    max-width: 100%;
-  }
-
-  .hero-title {
-    font-size: 36px;
-  }
-
-  .hero-description {
-    font-size: 16px;
-    margin: 0 auto 24px;
-  }
-
-  .hero-buttons {
+    align-items: center;
     justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
+    min-height: 400px;
     gap: 20px;
-  }
-
-  .hero-stat-number {
-    font-size: 22px;
-  }
-
-  .hero-image-placeholder {
-    width: 200px;
-    height: 200px;
-    font-size: 80px;
-    margin-top: 30px;
-  }
-
-  .hero-stat-divider {
-    height: 30px;
-  }
+    width: 100%;
+    color: var(--text-secondary);
+    text-align: center;
 }
 
-/* Small Mobile */
+.hero-retry-btn {
+    padding: 12px 32px;
+    background: var(--amber);
+    color: var(--ink);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-title { font-size: 40px; }
+    .hero-anime-image { width: 280px; height: 400px; }
+    .hero-section { padding: 40px 30px; }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 40px 20px 30px;
+        border-radius: 0 0 20px 20px;
+    }
+    .hero-content { max-width: 100%; }
+    .hero-title { font-size: 32px; }
+    .hero-description {
+        font-size: 15px;
+        margin: 0 auto 20px;
+        max-width: 100%;
+    }
+    .hero-meta { justify-content: center; font-size: 13px; }
+    .hero-genres { justify-content: center; }
+    .hero-buttons { justify-content: center; }
+    .hero-anime-image { width: 200px; height: 280px; margin-top: 30px; }
+    .hero-image-glow { width: 250px; height: 350px; }
+    .hero-background { opacity: 0.05; }
+    .hero-overlay {
+        background: linear-gradient(180deg, rgba(15, 15, 26, 0.95) 0%, rgba(15, 15, 26, 0.9) 100%);
+    }
+}
+
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 28px;
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .hero-btn-primary,
-  .hero-btn-secondary {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .hero-stat-number {
-    font-size: 18px;
-  }
-
-  .hero-stat-label {
-    font-size: 12px;
-  }
+    .hero-title { font-size: 26px; }
+    .hero-description { font-size: 14px; }
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-anime-image { width: 160px; height: 220px; }
+    .hero-meta { font-size: 12px; gap: 8px; }
+    .hero-section { padding: 30px 16px 20px; }
 }
