@@ -1,0 +1,572 @@
+/* styles/AnimeDetail.css */
+
+.anime-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Back Button */
+.detail-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.detail-back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    transform: translateX(-4px);
+}
+
+.detail-back-btn.top {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+/* Hero Section */
+.detail-hero {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    min-height: 500px;
+}
+
+.detail-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    opacity: 0.3;
+}
+
+.detail-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 15, 26, 0.95) 0%, rgba(15, 15, 26, 0.7) 50%, rgba(15, 15, 26, 0.5) 100%);
+}
+
+.detail-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.detail-hero-left {
+    flex-shrink: 0;
+}
+
+.detail-poster {
+    width: 280px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.detail-hero-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.detail-title-english {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.detail-title-japanese {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin: 0;
+    opacity: 0.7;
+}
+
+.detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.detail-score {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--amber);
+    font-weight: 700;
+}
+
+.detail-star {
+    color: var(--amber);
+}
+
+.detail-score-by {
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.detail-meta-divider {
+    opacity: 0.3;
+}
+
+.detail-rank,
+.detail-popularity {
+    opacity: 0.8;
+}
+
+.detail-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.detail-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.detail-info-icon {
+    color: var(--amber);
+    font-size: 14px;
+}
+
+.detail-status {
+    color: var(--amber);
+    font-weight: 600;
+}
+
+.detail-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.detail-genre-tag {
+    padding: 4px 14px;
+    background: rgba(245, 166, 35, 0.1);
+    color: var(--amber);
+    border-radius: 20px;
+    font-size: 13px;
+    border: 1px solid rgba(245, 166, 35, 0.1);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+}
+
+.detail-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+.detail-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.detail-action-btn.active {
+    background: rgba(245, 166, 35, 0.2);
+    color: var(--amber);
+}
+
+.detail-action-btn.trailer {
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--amber);
+}
+
+.detail-action-btn.trailer:hover {
+    background: rgba(245, 166, 35, 0.25);
+}
+
+.detail-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+}
+
+.detail-rating-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.detail-rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.detail-rating-star {
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.3;
+}
+
+.detail-rating-star:hover {
+    transform: scale(1.2);
+}
+
+.detail-rating-star.active {
+    opacity: 1;
+}
+
+/* Sections */
+.detail-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.detail-section-icon {
+    color: var(--amber);
+}
+
+.detail-synopsis {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.detail-studio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.detail-studio-tag {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-producer-tag {
+    padding: 8px 16px;
+    background: rgba(245, 166, 35, 0.05);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid rgba(245, 166, 35, 0.1);
+}
+
+/* Characters */
+.detail-characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.detail-character-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-character-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 166, 35, 0.3);
+}
+
+.detail-character-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.detail-character-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.detail-character-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.detail-character-role {
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.detail-view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.detail-view-all-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Trailer Modal */
+.detail-trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.detail-trailer-content {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.detail-trailer-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.detail-trailer-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.detail-trailer-iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+/* Error State */
+.detail-error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 20px;
+    text-align: center;
+}
+
+.detail-error-container h2 {
+    color: var(--text-secondary);
+    font-size: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .detail-hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+    .detail-poster {
+        width: 220px;
+        height: 320px;
+    }
+    .detail-title {
+        font-size: 32px;
+    }
+    .detail-meta {
+        justify-content: center;
+    }
+    .detail-info-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    .detail-actions {
+        justify-content: center;
+    }
+    .detail-rating {
+        justify-content: center;
+    }
+    .detail-genres {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .anime-detail-page {
+        padding: 10px;
+    }
+    .detail-hero-content {
+        padding: 20px;
+    }
+    .detail-poster {
+        width: 180px;
+        height: 260px;
+    }
+    .detail-title {
+        font-size: 26px;
+    }
+    .detail-title-english {
+        font-size: 16px;
+    }
+    .detail-title-japanese {
+        font-size: 14px;
+    }
+    .detail-info-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .detail-info-item {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    .detail-characters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .detail-character-image {
+        height: 100px;
+    }
+    .detail-trailer-iframe {
+        height: 300px;
+    }
+    .detail-back-btn.top {
+        top: 10px;
+        left: 10px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    .detail-action-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-title {
+        font-size: 22px;
+    }
+    .detail-poster {
+        width: 150px;
+        height: 210px;
+    }
+    .detail-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail-characters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .detail-section {
+        padding: 12px;
+    }
+    .detail-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .detail-action-btn {
+        justify-content: center;
+        width: 100%;
+    }
+    .detail-rating-stars {
+        flex-wrap: wrap;
+    }
+    .detail-rating-star {
+        font-size: 20px;
+    }
+}

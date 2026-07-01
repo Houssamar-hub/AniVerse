@@ -6,6 +6,7 @@
   padding: 0 20px;
 }
 
+/* ========== SECTIONS ========== */
 .section {
   max-width: 1200px;
   margin: 0 auto 60px;
@@ -66,6 +67,7 @@
   transform: translateX(4px);
 }
 
+/* ========== ANIME GRID ========== */
 .anime-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -162,39 +164,36 @@
   opacity: 0.7;
 }
 
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  text-align: center;
-}
-
-.empty-state p {
-  font-size: 16px;
-}
-
-.error-container {
+/* ========== ERROR STATE ========== */
+.home-error-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: 20px;
+  gap: 16px;
   text-align: center;
+  padding: 20px;
 }
 
-.error-container h2 {
+.home-error-icon {
+  font-size: 48px;
+}
+
+.home-error-container h2 {
   color: var(--text-secondary);
   font-size: 24px;
+  font-weight: 600;
 }
 
-.retry-btn {
+.home-error-hint {
+  color: var(--text-secondary);
+  font-size: 16px;
+  max-width: 400px;
+  opacity: 0.7;
+}
+
+.home-retry-btn {
   padding: 12px 32px;
   background: var(--amber);
   color: var(--ink);
@@ -204,14 +203,93 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 8px;
 }
 
-.retry-btn:hover {
+.home-retry-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
 }
 
+.home-refresh-btn {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* ========== EMPTY STATE ========== */
+.home-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+.home-empty-icon {
+  font-size: 48px;
+}
+
+.home-empty-state h3 {
+  font-size: 24px;
+  color: var(--text-primary);
+}
+
+.home-empty-state p {
+  color: var(--text-secondary);
+}
+
+.home-empty-btn {
+  padding: 10px 24px;
+  background: var(--amber);
+  color: var(--ink);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-empty-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 24px;
+  }
+  .anime-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+  .homepage {
+    padding: 0 10px;
+  }
+  .section {
+    padding: 0 10px;
+    margin-bottom: 40px;
+  }
   .section-title {
     font-size: 22px;
   }
@@ -219,12 +297,19 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 16px;
   }
-  .homepage {
-    padding: 0 10px;
+  .section-header {
+    margin-bottom: 16px;
+  }
+  .home-error-container h2 {
+    font-size: 20px;
   }
 }
 
+/* Small Mobile */
 @media (max-width: 480px) {
+  .section-title {
+    font-size: 18px;
+  }
   .anime-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 12px;
@@ -235,7 +320,59 @@
   .anime-card-info {
     font-size: 10px;
   }
-  .section-title {
+  .anime-card-episodes {
+    padding: 1px 8px;
+  }
+  .section-view-all {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  .section-icon {
     font-size: 18px;
   }
+  .home-error-container h2 {
+    font-size: 18px;
+  }
+  .home-empty-state h3 {
+    font-size: 20px;
+  }
+}
+/* styles/HomePage.css - Add these */
+
+.home-error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.home-error-icon {
+    font-size: 48px;
+}
+
+.home-error-container h2 {
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.home-retry-btn {
+    padding: 12px 32px;
+    background: var(--amber);
+    color: var(--ink);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.home-retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245, 166, 35, 0.3);
 }

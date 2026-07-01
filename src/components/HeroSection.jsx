@@ -11,6 +11,7 @@ function Hero() {
     const [topAnime, setTopAnime] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [retryCount, setRetryCount] = useState(0);
 
     useEffect(() => {
         fetchTopAnime();
@@ -19,31 +20,55 @@ function Hero() {
     const fetchTopAnime = async () => {
         try {
             setLoading(true);
-            const response = await getTopAnime(1, 1);
-            if (response.data && response.data.length > 0) {
-                setTopAnime(response.data[0]);
-            }
             setError(null);
+            
+            const response = await getTopAnime(1, 1);
+            
+            if (response && response.data && response.data.length > 0) {
+                setTopAnime(response.data[0]);
+            } else {
+                setError('No anime found');
+            }
         } catch (err) {
             console.error('Error fetching top anime:', err);
-            setError('Failed to load featured anime');
+            const errorMessage = err.response?.status === 429 
+                ? 'Too many requests. Please wait a moment.'
+                : err.message || 'Failed to load featured anime';
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }
     };
 
+    const handleRetry = () => {
+        setRetryCount(prev => prev + 1);
+        fetchTopAnime();
+    };
+
     if (loading) {
-        return <LoadingSpinner message="Loading featured anime..." size="medium" />;
+        return (
+            <section className="hero-section">
+                <div className="hero-loading-container">
+                    <LoadingSpinner message="Loading featured anime..." size="medium" />
+                </div>
+            </section>
+        );
     }
 
     if (error || !topAnime) {
         return (
             <section className="hero-section">
-                <div className="hero-error">
-                    <p>{error || 'No anime found'}</p>
-                    <button onClick={fetchTopAnime} className="hero-retry-btn">
-                        Retry
+                <div className="hero-error-container">
+                    <div className="hero-error-icon">⚠️</div>
+                    <p className="hero-error-message">{error || 'No anime found'}</p>
+                    <button onClick={handleRetry} className="hero-retry-btn">
+                        {retryCount > 0 ? 'Retry Again' : 'Retry'}
                     </button>
+                    {retryCount > 2 && (
+                        <p className="hero-error-hint">
+                            Still having issues? Try refreshing the page.
+                        </p>
+                    )}
                 </div>
             </section>
         );
