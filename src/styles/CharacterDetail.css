@@ -1,0 +1,439 @@
+/* styles/CharacterDetail.css */
+
+.character-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Back Button */
+.char-detail-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.char-detail-back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    transform: translateX(-4px);
+}
+
+.char-detail-back-btn.top {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+/* Hero Section */
+.char-detail-hero {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    min-height: 400px;
+}
+
+.char-detail-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    opacity: 0.2;
+}
+
+.char-detail-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 15, 26, 0.95) 0%, rgba(15, 15, 26, 0.7) 50%, rgba(15, 15, 26, 0.5) 100%);
+}
+
+.char-detail-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+}
+
+.char-detail-image {
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.char-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.char-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.char-detail-name {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.char-detail-kanji {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0;
+    opacity: 0.7;
+}
+
+.char-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.char-detail-favorites {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff4757;
+    font-weight: 600;
+}
+
+.char-detail-heart {
+    font-size: 18px;
+}
+
+.char-detail-meta-divider {
+    opacity: 0.3;
+}
+
+.char-detail-nicknames {
+    opacity: 0.7;
+}
+
+/* About Section */
+.char-detail-about {
+    margin-top: 8px;
+}
+
+.char-detail-about h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.char-detail-about p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* Sections */
+.char-detail-section {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.char-detail-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.char-detail-section-icon {
+    color: var(--amber);
+    font-size: 20px;
+}
+
+/* Anime Grid */
+.char-detail-anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.char-detail-anime-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.char-detail-anime-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 166, 35, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.char-detail-anime-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.char-detail-anime-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.char-detail-anime-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.char-detail-anime-role {
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Voice Actors Grid */
+.char-detail-voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.char-detail-voice-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.char-detail-voice-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.char-detail-voice-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.char-detail-voice-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.char-detail-voice-language {
+    font-size: 12px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Manga Grid */
+.char-detail-manga-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.char-detail-manga-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.char-detail-manga-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 166, 35, 0.3);
+}
+
+.char-detail-manga-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.char-detail-manga-info {
+    padding: 8px;
+    text-align: center;
+}
+
+.char-detail-manga-info h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.char-detail-manga-role {
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Error State */
+.char-detail-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.char-detail-error-icon {
+    font-size: 48px;
+}
+
+.char-detail-error h2 {
+    color: var(--text-secondary);
+    font-size: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .char-detail-hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+    .char-detail-image {
+        width: 200px;
+        height: 200px;
+    }
+    .char-detail-name {
+        font-size: 32px;
+    }
+    .char-detail-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .character-detail-page {
+        padding: 10px;
+    }
+    .char-detail-hero-content {
+        padding: 20px;
+    }
+    .char-detail-image {
+        width: 160px;
+        height: 160px;
+    }
+    .char-detail-name {
+        font-size: 26px;
+    }
+    .char-detail-kanji {
+        font-size: 18px;
+    }
+    .char-detail-anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    .char-detail-anime-card img {
+        height: 150px;
+    }
+    .char-detail-voices-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .char-detail-manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+    .char-detail-manga-card img {
+        height: 130px;
+    }
+    .char-detail-back-btn.top {
+        top: 10px;
+        left: 10px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .char-detail-name {
+        font-size: 22px;
+    }
+    .char-detail-image {
+        width: 130px;
+        height: 130px;
+    }
+    .char-detail-anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .char-detail-anime-card img {
+        height: 120px;
+    }
+    .char-detail-voices-grid {
+        grid-template-columns: 1fr;
+    }
+    .char-detail-manga-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .char-detail-manga-card img {
+        height: 110px;
+    }
+    .char-detail-section {
+        padding: 16px;
+    }
+}
